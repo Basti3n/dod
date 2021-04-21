@@ -1,7 +1,5 @@
 package models;
 
-import poo.Surface;
-
 public class RectangleShape extends Shape {
 
     public float width;

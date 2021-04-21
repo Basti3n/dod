@@ -2,6 +2,7 @@ package poo;
 
 import models.ColorShape;
 import models.Shape;
+import models.Surface;
 
 import java.util.List;
 import java.util.stream.Collectors;

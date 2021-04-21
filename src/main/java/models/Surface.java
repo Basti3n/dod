@@ -1,10 +1,10 @@
-package poo;
+package models;
 
 public class Surface {
-    public double xmin = 800;
-    public double ymin = 800;
-    public double xmax = 0;
-    public double ymax;
+    public float xmin = 800;
+    public float ymin = 800;
+    public float xmax = 0;
+    public float ymax;
 
     public Surface() {
         this.xmin = 800;
@@ -13,7 +13,7 @@ public class Surface {
         this.ymax = 0;
     }
 
-    public Surface(double xmin, double ymin, double xmax, double ymax) {
+    public Surface(float xmin, float ymin, float xmax, float ymax) {
         this.xmin = xmin;
         this.ymin = ymin;
         this.xmax = xmax;
@@ -35,7 +35,7 @@ public class Surface {
 
     @Override
     public String toString() {
-        return "poo.Surface{" +
+        return "models.Surface{" +
                 "xmin=" + xmin +
                 ", ymin=" + ymin +
                 ", xmax=" + xmax +
@@ -43,11 +43,11 @@ public class Surface {
                 '}';
     }
 
-    public double getWidth() {
+    public float getWidth() {
         return this.xmax - this.xmin;
     }
 
-    public double getHeight() {
+    public float getHeight() {
         return this.ymax - this.ymin;
     }
 }

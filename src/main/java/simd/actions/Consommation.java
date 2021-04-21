@@ -1,15 +1,22 @@
 package simd.actions;
 
+import javafx.controllers.IndexController;
 import models.Shape;
 
 import java.util.List;
 
 public class Consommation {
+	public IndexController controller;
 
-	public void consume(List<Shape> formes) {
-		formes.stream().forEach(
-			forme -> {
-				System.out.println("  - "+forme);
+	public Consommation(IndexController controller) {
+		this.controller = controller;
+	}
+
+	public void consume(List<Shape> shapes) {
+		shapes.stream().forEach(
+			shape -> {
+				System.out.println("  - "+shape);
+				this.controller.addShapeToGroup(shape);
 			}
 		);
 	}
