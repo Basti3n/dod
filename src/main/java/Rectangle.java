@@ -2,6 +2,9 @@ package main.java;
 
 public class Rectangle extends Forme {
 
+    float width;
+    float height;
+
     public Rectangle(float x, float y, float width, float height, Couleur color) {
         this.x = x;
         this.y = y;
@@ -20,7 +23,4 @@ public class Rectangle extends Forme {
                 "\n\tcolor=" + color;
     }
 
-    public double getArea(){
-        return this.width * this.height;
-    }
 }

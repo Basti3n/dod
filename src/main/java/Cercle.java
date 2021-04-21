@@ -2,12 +2,17 @@ package main.java;
 
 public class Cercle extends Forme {
 
+    float radius;
+
     public Cercle(float cx, float cy, float radius, Couleur color) {
-        this.x = cx - radius;
-        this.y = cy - radius;
-        this.width = radius * 2;
-        this.height = radius * 2;
+        this.x = cx;
+        this.y = cy;
+        this.radius = radius;
         this.color = color;
+    }
+
+    public Surface getSurface() {
+        return new Surface(x, y - radius * 2, x + radius * 2, y);
     }
 
     @Override
@@ -15,11 +20,9 @@ public class Cercle extends Forme {
         return "Cercle" +
                 "\n\tx=" + x +
                 ", y=" + y +
-                "\n\tdiameter=" + width +
+                "\n\tradius=" + radius +
                 "\n\tcolor=" + color;
     }
 
-    public double getArea(){
-        return 3.14 * (width / 2) * (width / 2);
-    }
+
 }
