@@ -1,4 +1,6 @@
-package poo;
+package models;
+
+import poo.Surface;
 
 public abstract class Shape {
     public float x;

@@ -1,9 +1,12 @@
 package simd.actions;
+import models.CircleShape;
+import models.RectangleShape;
+import models.Shape;
+import simd.models.ShapeType;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-import simd.models.Shape;
-import simd.models.ShapeType;
 
 public class Filtre implements Pipeline {
 
@@ -17,9 +20,8 @@ public class Filtre implements Pipeline {
 	public List<Shape> output(List<Shape> input) {
 		return input.stream()
 		.filter(
-			forme -> {
-				return forme.type.equals(type);
-			}
+			shape -> shape instanceof CircleShape && type.equals(ShapeType.CIRCLE)
+					|| shape instanceof RectangleShape && type.equals(ShapeType.RECTANGLE)
 		).collect(Collectors.toList());
 	}
 

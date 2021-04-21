@@ -1,7 +1,7 @@
 package simd.actions;
 
 import java.util.List;
-import simd.models.Shape;
+import models.Shape;
 
 public interface Pipeline {
 

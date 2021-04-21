@@ -10,7 +10,13 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
 
+import models.CircleShape;
+import models.ColorShape;
+import models.RectangleShape;
+import models.Shape;
 import poo.*;
+import simd.GenerationFromFile;
+import simd.Simd;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +29,7 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("index.fxml"));
         Parent parentRoot = loader.load();
         IndexController indexController = loader.getController();
@@ -37,38 +43,28 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public void runner( Group root){
-        CircleShape cVert = new CircleShape(150, 150, 100, ColorShape.VERT);
-        System.out.println(cVert);
-        CircleShape cBleu = new CircleShape(270, 330, 100, ColorShape.BLEU);
-        System.out.println(cBleu);
-        RectangleShape rVert = new RectangleShape(250, 200, 100, 200, ColorShape.VIOLET);
-        System.out.println(rVert);
-        RectangleShape rGris = new RectangleShape(50, 50, 100, 200, ColorShape.GRIS);
-        System.out.println(rGris);
-        ArrayList<Shape> shapes = new ArrayList<>();
-        shapes.add(cVert);
-        shapes.add(rVert);
-        shapes.add(cBleu);
-//            shapes.add(rGris);
+    public void runner( Group root) throws Exception {
 
-        // Add poo.Shape to background
+        List<Shape> shapes = GenerationFromFile.output("src\\main\\resources\\forme.txt");
+
+        Simd.run(shapes);
+
+        // Add models.Shape to background
         root.getChildren().add(drawShapes(shapes));
-
-        Surface surface = Board.calcBoard(shapes);
-        root.getChildren().add(DrawSurface(surface));
 
 //            System.out.println(surface);
 
 
 //            System.out.println(poo.Board.getAllColorShapes(shapes));
 
-        root.getChildren().add(drawColorShape(Board.getAllColorShapes(shapes)));
+//        root.getChildren().add(drawColorShape(Board.getAllColorShapes(shapes)));
 
 
     }
 
-    public Group drawShapes(ArrayList<Shape> shapes){
+
+
+    public static Group drawShapes(List<Shape> shapes){
         Group shapesToDraw = new Group();
         for (Shape shape:shapes) {
 
