@@ -1,7 +1,9 @@
 package javafx.controllers;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 
@@ -24,6 +26,13 @@ public class IndexController {
     @FXML
     public Group mainGroup;
 
+    public String shapeToDraw = "Rectangle";
+
+    public float beginX = 0;
+    public float beginY = 0;
+    public float endX = 0;
+    public float endY = 0;
+
     public void setStage(Stage primaryStage) {
         this.stage = primaryStage;
     }
@@ -31,11 +40,55 @@ public class IndexController {
     @FXML
     public void onCircleButtonClicked() {
         System.out.println("CLICKED CIRCLE BUTTON");
+        this.shapeToDraw = "Circle";
+    }
+
+    @FXML
+    public void onRectangleButtonClicked() {
+        System.out.println("CLICKED RECTANGLE BUTTON");
+        this.shapeToDraw = "Rectangle";
     }
 
     @FXML
     public void initialize() {
+        this.setStyle();
+        this.mainPane.addEventFilter(MouseEvent.ANY, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if(mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED){
+                    System.out.println("Click");
+                    beginX = (float) mouseEvent.getX();
+                    beginY = (float) mouseEvent.getY();
+                }
+                if(mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED) {
+                    System.out.println("Click");
+                    endX = (float) mouseEvent.getX();
+                    endY = (float) mouseEvent.getY();
+                    newShape();
+                }
+            }
+        });
         runner();
+    }
+
+    private void setStyle(){
+        this.mainPane.setStyle("-fx-background-color: #252525");
+    }
+
+    public void newShape(){
+        if(this.shapeToDraw == "Circle"){
+            System.out.println("Circle");
+            System.out.println(beginX);
+            System.out.println(beginY);
+            System.out.println(endX);
+            System.out.println(endY);
+        }else if (this.shapeToDraw == "Rectangle"){
+            System.out.println("Rectangle");
+            System.out.println(beginX);
+            System.out.println(beginY);
+            System.out.println(endX);
+            System.out.println(endY);
+        }
     }
 
 
@@ -115,4 +168,6 @@ public class IndexController {
             }
         }
     }
+
+
 }
