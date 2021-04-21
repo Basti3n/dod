@@ -1,3 +1,5 @@
+package poo;
+
 public class Surface {
     public double xmin;
     public double ymin;
@@ -33,7 +35,7 @@ public class Surface {
 
     @Override
     public String toString() {
-        return "Surface{" +
+        return "poo.Surface{" +
                 "xmin=" + xmin +
                 ", ymin=" + ymin +
                 ", xmax=" + xmax +

@@ -1,6 +1,8 @@
+package poo;
+
 public class CircleShape extends Shape {
 
-    float radius;
+    public float radius;
 
     public CircleShape(float cx, float cy, float radius, ColorShape colorShape) {
         this.x = cx;

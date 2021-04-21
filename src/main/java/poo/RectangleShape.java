@@ -1,8 +1,9 @@
+package poo;
 
 public class RectangleShape extends Shape {
 
-    float width;
-    float height;
+    public float width;
+    public float height;
 
     public RectangleShape(float x, float y, float width, float height, ColorShape colorShape) {
         this.x = x;

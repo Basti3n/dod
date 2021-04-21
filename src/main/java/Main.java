@@ -6,6 +6,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
+import poo.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ public class Main extends Application {
             shapes.add(cBleu);
 //            shapes.add(rGris);
 
-            // Add Shape to background
+            // Add poo.Shape to background
             root.getChildren().add(drawShapes(shapes));
 
             Surface surface = Board.calcBoard(shapes);
@@ -51,7 +52,7 @@ public class Main extends Application {
 //            System.out.println(surface);
 
 
-//            System.out.println(Board.getAllColorShapes(shapes));
+//            System.out.println(poo.Board.getAllColorShapes(shapes));
 
             root.getChildren().add(drawColorShape(Board.getAllColorShapes(shapes)));
 

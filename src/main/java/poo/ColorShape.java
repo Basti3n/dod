@@ -1,3 +1,5 @@
+package poo;
+
 public enum ColorShape {
     ROUGE("RED"),
     VERT("GREEN"),
