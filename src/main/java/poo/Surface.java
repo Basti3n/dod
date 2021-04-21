@@ -1,12 +1,16 @@
 package poo;
 
 public class Surface {
-    public double xmin;
-    public double ymin;
-    public double xmax;
+    public double xmin = 800;
+    public double ymin = 800;
+    public double xmax = 0;
     public double ymax;
 
     public Surface() {
+        this.xmin = 800;
+        this.ymin = 800;
+        this.xmax = 0;
+        this.ymax = 0;
     }
 
     public Surface(double xmin, double ymin, double xmax, double ymax) {
