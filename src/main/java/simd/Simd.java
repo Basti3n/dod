@@ -1,19 +1,24 @@
 package simd;
 
+import simd.actions.Consommation;
+import simd.actions.Emission;
+import simd.actions.Filtre;
+import simd.actions.Mutation;
+
 import java.util.Iterator;
 import java.util.List;
+import simd.models.Shape;
 
-public class Main {
+public class Simd {
 
     private static void iteration(List<String> formes) {
-        Iterable<String> iterable = formes;
-        Iterator<String> iterator = iterable.iterator();
+        Iterator<String> iterator = formes.iterator();
 
         System.out.println();
         System.out.println("[ ITERATION ]");
         System.out.println();
         System.out.println(" > Iterable :");
-        for (String type : iterable) {
+        for (String type : formes) {
             System.out.println("  - "+type);
         }
 
@@ -87,15 +92,15 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
-        List<String> formes = GenerationFromFile.output("src\\main\\resources\\forme.txt");
+        List<Shape> formes = GenerationFromFile.output("src\\main\\resources\\forme.txt");
 
-        filter(formes);
-
-        mutation(formes);
-
-        emission(formes);
-
-        consommation(formes);
+//        filter(formes);
+//
+//        mutation(formes);
+//
+//        emission(formes);
+//
+//        consommation(formes);
 
     }
 }

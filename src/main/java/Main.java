@@ -1,13 +1,18 @@
 import javafx.application.Application;
+import javafx.controllers.IndexController;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
+
 import poo.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,12 +23,16 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
-        Group root = new Group();
-        Scene scene = new Scene(root, 800, 800, Color.web("#252525"));
+    public void start(Stage primaryStage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("index.fxml"));
+        Parent parentRoot = loader.load();
+        IndexController indexController = loader.getController();
+        indexController.setStage(primaryStage);
+
+        Scene scene = new Scene(parentRoot, 800, 800, Color.web("#252525"));
         primaryStage.setScene(scene);
 
-        runner(root);
+        runner((Group) parentRoot);
 
         primaryStage.show();
     }

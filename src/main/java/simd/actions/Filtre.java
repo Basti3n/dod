@@ -1,23 +1,24 @@
-package simd;
-
+package simd.actions;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import simd.models.Shape;
+import simd.models.ShapeType;
+
 public class Filtre implements Pipeline {
 
-	String type;
+	ShapeType type;
 	
 	// Filtre d'un type
-	public Filtre(String type) {
+	public Filtre(ShapeType type) {
 		this.type = type;
 	}
 	
-	public List<String> output(List<String> input) {
+	public List<Shape> output(List<Shape> input) {
 		return input.stream()
 		.filter(
 			forme -> {
-				// Filtre qui ne laisse passer qu'un type particulier : "cercle" ou "rectangle"
-				return (forme.startsWith(type+"@"));
+				return forme.type.equals(type);
 			}
 		).collect(Collectors.toList());
 	}

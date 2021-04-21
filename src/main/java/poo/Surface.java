@@ -7,10 +7,6 @@ public class Surface {
     public double ymax;
 
     public Surface() {
-        this.xmin = 500;
-        this.ymin = 500;
-        this.xmax = 0;
-        this.ymax = 0;
     }
 
     public Surface(double xmin, double ymin, double xmax, double ymax) {

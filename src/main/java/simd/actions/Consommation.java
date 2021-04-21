@@ -1,4 +1,4 @@
-package simd;
+package simd.actions;
 
 import java.util.List;
 
