@@ -1,8 +1,11 @@
 package javafx.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -26,12 +29,19 @@ public class IndexController {
     @FXML
     public Group mainGroup;
 
-    public String shapeToDraw = "Rectangle";
+    public String shapeToDraw = "Circle";
 
-    public float beginX = 0;
-    public float beginY = 0;
-    public float endX = 0;
-    public float endY = 0;
+    private float beginX = 0;
+    private float beginY = 0;
+    private float endX = 0;
+    private float endY = 0;
+
+    private ColorShape colorToDraw = ColorShape.GRIS;
+
+    private float groupMaxX = 800;
+    private float groupMaxY = 640;
+    private float groupMinX = 0;
+    private float groupMinY = 40;
 
     public void setStage(Stage primaryStage) {
         this.stage = primaryStage;
@@ -50,45 +60,43 @@ public class IndexController {
     }
 
     @FXML
+    public void onChangeColorOne() {
+        this.colorToDraw = ColorShape.ROUGE;
+    }
+
+    @FXML
+    public void onChangeColorTwo() {
+        this.colorToDraw = ColorShape.VERT;
+    }
+
+    @FXML
+    public void onChangeColorThree() {
+        this.colorToDraw = ColorShape.BLEU;
+    }
+
+    @FXML
     public void initialize() {
+        drawRectangle(0,40,800,600, ColorShape.LIGHT_GRIS);
+
         this.setStyle();
-        this.mainPane.addEventFilter(MouseEvent.ANY, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if(mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED){
-                    System.out.println("Click");
-                    beginX = (float) mouseEvent.getX();
-                    beginY = (float) mouseEvent.getY();
-                }
-                if(mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED) {
-                    System.out.println("Click");
-                    endX = (float) mouseEvent.getX();
-                    endY = (float) mouseEvent.getY();
-                    newShape();
-                }
-            }
+        this.mainGroup.setOnMousePressed(event -> {
+            System.out.println("Click");
+            beginX = (float) event.getX();
+            beginY = (float) event.getY();
+        });
+        this.mainGroup.setOnMouseReleased(event -> {
+            System.out.println("Release");
+            endX = (float) event.getX();
+            endX = Math.min(endX, groupMaxX);
+            endY = (float) event.getY();
+            endY = Math.min(endY, groupMaxY);
+            newShape();
         });
         runner();
     }
 
     private void setStyle(){
-        this.mainPane.setStyle("-fx-background-color: #252525");
-    }
-
-    public void newShape(){
-        if(this.shapeToDraw == "Circle"){
-            System.out.println("Circle");
-            System.out.println(beginX);
-            System.out.println(beginY);
-            System.out.println(endX);
-            System.out.println(endY);
-        }else if (this.shapeToDraw == "Rectangle"){
-            System.out.println("Rectangle");
-            System.out.println(beginX);
-            System.out.println(beginY);
-            System.out.println(endX);
-            System.out.println(endY);
-        }
+        this.mainGroup.setStyle("-fx-background-color: #252525");
     }
 
 
@@ -117,6 +125,44 @@ public class IndexController {
         drawSurface(surface);
         drawColorShape(Board.getAllColorShapes(shapes));
 
+    }
+
+    public void newShape(){
+        if(this.shapeToDraw == "Circle"){
+            System.out.println("Circle");
+            System.out.println(beginX);
+            System.out.println(beginY);
+            System.out.println(endX);
+            System.out.println(endY);
+            drawCircle(beginX, beginY, (float) (Math.sqrt(Math.pow(endX-beginX,2) + Math.pow(endY-beginY,2))), this.colorToDraw);
+        }else if (this.shapeToDraw == "Rectangle"){
+            System.out.println("Rectangle");
+            System.out.println(beginX);
+            System.out.println(beginY);
+            System.out.println(endX);
+            System.out.println(endY);
+            float x = Math.min(beginX, endX);
+            float y = Math.min(beginY, endY);
+            float width = Math.abs(endX - beginX);
+            float height = Math.abs(endY - beginY);
+            drawRectangle(x, y, width, height, this.colorToDraw);
+        }
+    }
+
+    public void drawCircle(float x, float y, float radius, ColorShape color){
+        Circle circle = new Circle(x, y, radius);
+        circle.setStrokeType(StrokeType.INSIDE);
+        circle.setStroke(Color.BLACK);
+        circle.setFill(Color.web(color.colorCode));
+        this.mainGroup.getChildren().add(circle);
+    }
+
+    public void drawRectangle(float x, float y, float width, float height, ColorShape color){
+        Rectangle rectangle = new Rectangle(x, y, width, height);
+        rectangle.setStrokeType(StrokeType.INSIDE);
+        rectangle.setStroke(Color.BLACK);
+        rectangle.setFill(Color.web(color.colorCode));
+        this.mainGroup.getChildren().add(rectangle);
     }
 
     public void drawSurface(Surface surface) {
@@ -168,6 +214,7 @@ public class IndexController {
             }
         }
     }
+
 
 
 }

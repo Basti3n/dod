@@ -5,7 +5,8 @@ public enum ColorShape {
     VERT("GREEN"),
     VIOLET("PURPLE"),
     BLEU("BLUE"),
-    GRIS("#959595");
+    GRIS("#959595"),
+    LIGHT_GRIS("#252525");
 
     public final String colorCode;
 

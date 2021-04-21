@@ -12,15 +12,28 @@
 <!--    </children>-->
 <!--</Pane>-->
 
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.layout.Region?>
 <Pane id="mainPane" fx:id="mainPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.controllers.IndexController">
     <children>
-        <HBox>
-            <Button text="Cercle"  onMouseClicked="#onCircleButtonClicked" />
-            <Button text="Rectangle"  onMouseClicked="#onRectangleButtonClicked" />
-            <Button text="Calculer"/>
-        </HBox>
+        <Group>
+            <HBox alignment="CENTER">
+                <children>
+                    <HBox alignment="CENTER_LEFT" prefWidth="200.0">
+                        <Button text="Cercle"  onMouseClicked="#onCircleButtonClicked" prefHeight="40.0"/>
+                        <Button text="Rectangle"  onMouseClicked="#onRectangleButtonClicked" prefHeight="40.0"/>
+                        <Button text="Calculer" prefHeight="40.0"/>
+                    </HBox>
+                    <Region prefWidth="400.0" prefHeight="40.0" HBox.hgrow="ALWAYS"/>
+                    <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
+                        <Button prefHeight="40.0" prefWidth="40.0" onMouseClicked="#onChangeColorOne"  style="-fx-background-color: #FF0000"/>
+                        <Button prefHeight="40.0" prefWidth="40.0" onMouseClicked="#onChangeColorTwo" style="-fx-background-color: #00FF00"/>
+                        <Button prefHeight="40.0" prefWidth="40.0" onMouseClicked="#onChangeColorThree"   style="-fx-background-color: #0000FF"/>
+                    </HBox>
+                </children>
+            </HBox>
+        </Group>
         <Group id="mainGroup" fx:id="mainGroup">
-
         </Group>
     </children>
 </Pane>
