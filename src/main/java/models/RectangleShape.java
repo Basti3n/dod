@@ -1,4 +1,6 @@
-package poo;
+package models;
+
+import poo.Surface;
 
 public class RectangleShape extends Shape {
 

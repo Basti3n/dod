@@ -1,4 +1,4 @@
-package poo;
+package models;
 
 public enum ColorShape {
     ROUGE("RED"),
