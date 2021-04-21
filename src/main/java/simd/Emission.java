@@ -1,4 +1,4 @@
-package grx.dod.demo.simd;
+package simd;
 
 import java.util.ArrayList;
 import java.util.List;
