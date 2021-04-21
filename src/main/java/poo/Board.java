@@ -7,10 +7,11 @@ import java.util.stream.Collectors;
 public class Board {
 
     public static Surface calcBoard(ArrayList<Shape> shapes){
+        System.out.println(shapes);
         return shapes.stream()
                 .map((shape -> shape.getSurface()))
                 .reduce(new Surface(), (Surface surface, Surface currentSurface) -> {
-            System.out.println(currentSurface);
+//            System.out.println(currentSurface);
             return surface.getOccupedSurface(currentSurface);
         });
     }
