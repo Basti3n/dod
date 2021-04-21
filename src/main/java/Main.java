@@ -1,4 +1,3 @@
-
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -9,6 +8,7 @@ import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Main extends Application {
@@ -19,7 +19,7 @@ public class Main extends Application {
         @Override
         public void start(Stage primaryStage) {
             Group root = new Group();
-            Scene scene = new Scene(root, 800, 600, Color.web("#252525"));
+            Scene scene = new Scene(root, 800, 800, Color.web("#252525"));
             primaryStage.setScene(scene);
 
             runner(root);
@@ -34,21 +34,27 @@ public class Main extends Application {
             System.out.println(cBleu);
             RectangleShape rVert = new RectangleShape(250, 200, 100, 200, ColorShape.VIOLET);
             System.out.println(rVert);
+            RectangleShape rGris = new RectangleShape(50, 50, 100, 200, ColorShape.GRIS);
+            System.out.println(rGris);
             ArrayList<Shape> shapes = new ArrayList<>();
             shapes.add(cVert);
             shapes.add(rVert);
             shapes.add(cBleu);
+//            shapes.add(rGris);
 
             // Add Shape to background
             root.getChildren().add(drawShapes(shapes));
 
             Surface surface = Board.calcBoard(shapes);
-            System.out.println(surface);
-
-
-            System.out.println(Board.getAllColorShapes(shapes));
-
             root.getChildren().add(DrawSurface(surface));
+
+//            System.out.println(surface);
+
+
+//            System.out.println(Board.getAllColorShapes(shapes));
+
+            root.getChildren().add(drawColorShape(Board.getAllColorShapes(shapes)));
+
 
         }
 
@@ -83,6 +89,21 @@ public class Main extends Application {
             rectangle.setStroke(Color.CYAN);
             rectangle.setFill(Color.web("gray", 0.1));
             return rectangle;
+        }
+
+        public Group drawColorShape(List<ColorShape> colorShapeList) {
+            Group shapesToDraw = new Group();
+            int counter = 0;
+            for (ColorShape colorShape:colorShapeList) {
+                Circle circle = new Circle( (counter * 800) / colorShapeList.size() + 25 * colorShapeList.size() , 700 ,25);
+                circle.setStrokeType(StrokeType.INSIDE);
+                circle.setStroke(Color.BLACK);
+                circle.setFill(Color.web(colorShape.colorCode));
+                shapesToDraw.getChildren().add(circle);
+
+                counter+= 1;
+            }
+            return shapesToDraw;
         }
 
 

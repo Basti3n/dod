@@ -1,5 +1,3 @@
-import javafx.scene.paint.Color;
-
 public class CircleShape extends Shape {
 
     float radius;
