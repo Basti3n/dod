@@ -1,5 +1,3 @@
-package main.java;
-
 public enum Couleur {
     ROUGE,
     VERT,

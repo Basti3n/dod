@@ -1,5 +1,3 @@
-package main.java;
-
 public class Surface {
     public double xmin;
     public double ymin;

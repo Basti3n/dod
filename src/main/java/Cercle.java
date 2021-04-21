@@ -1,5 +1,3 @@
-package main.java;
-
 public class Cercle extends Forme {
 
     float radius;

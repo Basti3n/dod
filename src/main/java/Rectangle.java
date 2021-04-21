@@ -1,5 +1,3 @@
-package main.java;
-
 public class Rectangle extends Forme {
 
     float width;
