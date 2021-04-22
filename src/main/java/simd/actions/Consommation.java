@@ -15,7 +15,6 @@ public class Consommation {
 	public void consume(List<Shape> shapes) {
 		shapes.stream().forEach(
 			shape -> {
-				System.out.println("  - "+shape);
 				this.controller.addShapeToGroup(shape);
 			}
 		);

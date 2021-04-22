@@ -1,16 +1,16 @@
 package models;
 
 public class Surface {
-    public float xmin = 800;
-    public float ymin = 800;
-    public float xmax = 0;
+    public float xmin;
+    public float ymin;
+    public float xmax;
     public float ymax;
 
     public Surface() {
         this.xmin = 800;
         this.ymin = 800;
-        this.xmax = 0;
-        this.ymax = 0;
+        this.xmax = -800;
+        this.ymax = -800;
     }
 
     public Surface(float xmin, float ymin, float xmax, float ymax) {
