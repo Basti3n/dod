@@ -1,12 +1,7 @@
 package javafx.controllers;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -14,7 +9,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
 import models.*;
-import simd.GenerationFromFile;
+import parallel.Parallel;
+import poo.Poo;
 import simd.Simd;
 import simd.actions.Consommation;
 
@@ -122,7 +118,18 @@ public class IndexController {
         List<Shape> shapes = GenerationFromFile.output("src\\main\\resources\\e.txt");
         Consommation consommation = new Consommation(this);
         consommation.consume(shapes);
-        Simd.run(shapes, this);
+
+        Algorithm algorithm = Algorithm.PARALLEL;
+
+        if (algorithm.equals(Algorithm.SIMD)) {
+            Simd.run(shapes, this);
+        } else if (algorithm.equals(Algorithm.PARALLEL)) {
+            Parallel.run(shapes, 8, this);
+        }
+        else if  (algorithm.equals(Algorithm.POO)) {
+            Poo.run(shapes, this);
+        }
+
 
         // TODO : EHEH
 //        Surface surface = Board.calcBoard(shapes);

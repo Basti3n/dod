@@ -2,7 +2,7 @@ package simd.actions;
 import models.CircleShape;
 import models.RectangleShape;
 import models.Shape;
-import simd.models.ShapeType;
+import models.ShapeType;
 
 import java.util.List;
 import java.util.stream.Collectors;

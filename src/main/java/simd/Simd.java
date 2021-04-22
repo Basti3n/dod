@@ -1,7 +1,6 @@
 package simd;
 
 import javafx.controllers.IndexController;
-import models.CircleShape;
 import simd.actions.Consommation;
 //import simd.actions.Emission;
 import simd.actions.Emission;
@@ -11,7 +10,7 @@ import simd.actions.Mutation;
 import java.util.ArrayList;
 import java.util.List;
 import models.Shape;
-import simd.models.ShapeType;
+import models.ShapeType;
 
 public class Simd {
 

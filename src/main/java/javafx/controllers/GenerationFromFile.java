@@ -1,7 +1,6 @@
-package simd;
+package javafx.controllers;
 
 import java.io.*;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,7 +8,7 @@ import models.CircleShape;
 import models.ColorShape;
 import models.RectangleShape;
 import models.Shape;
-import simd.models.ShapeType;
+import models.ShapeType;
 
 public class GenerationFromFile {
 

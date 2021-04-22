@@ -1,4 +1,4 @@
-package simd.models;
+package models;
 
 public enum ShapeType {
     CIRCLE,

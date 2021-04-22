@@ -3,7 +3,7 @@ package simd.actions;
 import models.CircleShape;
 import models.RectangleShape;
 import models.Shape;
-import simd.models.ShapeType;
+import models.ShapeType;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,7 +35,7 @@ public class Mutation implements Pipeline {
                             && shape instanceof CircleShape) {
                         return new RectangleShape(
                                 shape.x - ((CircleShape) shape).radius,
-                                shape.y + ((CircleShape) shape).radius,
+                                shape.y - ((CircleShape) shape).radius,
                                 ((CircleShape) shape).radius * 2,
                                 ((CircleShape) shape).radius * 2, shape.colorShape
                         );
