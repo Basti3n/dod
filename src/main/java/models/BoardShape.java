@@ -10,9 +10,4 @@ public class BoardShape extends Shape{
         this.width = width;
         this.height = height;
     }
-
-    @Override
-    public Surface getSurface() {
-        return null;
-    }
 }

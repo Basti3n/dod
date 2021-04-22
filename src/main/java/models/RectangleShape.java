@@ -14,11 +14,6 @@ public class RectangleShape extends Shape {
     }
 
     @Override
-    public Surface getSurface() {
-        return new Surface(x, y, x + width, y + height);
-    }
-
-    @Override
     public String toString() {
         return "Rectangle" +
                 " x=" + x +

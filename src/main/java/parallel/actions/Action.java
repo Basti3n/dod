@@ -1,8 +1,9 @@
 package parallel.actions;
+import models.RectangleShape;
 import models.Shape;
 
 public interface Action {
 
-	Shape transform(Shape shape);
+	RectangleShape transform(Shape shape);
 
 }

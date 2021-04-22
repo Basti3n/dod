@@ -12,11 +12,6 @@ public class CircleShape extends Shape {
     }
 
     @Override
-    public Surface getSurface() {
-        return new Surface(x - radius, y - radius, x + radius, y + radius);
-    }
-
-    @Override
     public String toString() {
         return "Cercle " +
                 "x=" + x +

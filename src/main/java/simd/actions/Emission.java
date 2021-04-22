@@ -1,23 +1,29 @@
 package simd.actions;
 
 import models.BoardShape;
+import models.RectangleShape;
 import models.Shape;
-import models.Surface;
+import simd.algorithm.Comparator;
+import simd.algorithm.RectangleComparator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Emission implements Pipeline {
+public class Emission {
+    Comparator comparator;
 
-    @Override
-    public List<Shape> output(List<Shape> shapes) {
+    public Emission(Comparator<RectangleShape> comparator) {
+        this.comparator = comparator;
+    }
+
+    public List<Shape> output(List<RectangleShape> shapes) {
         ArrayList<Shape> list = new ArrayList<>();
-        Surface computedSurface = shapes.stream()
-                .map((Shape::getSurface))
-                .reduce(new Surface(), (Surface surface, Surface currentSurface) -> {
-                    return surface.getOccupedSurface(currentSurface);
-                });
-        list.add(new BoardShape(computedSurface.xmin, computedSurface.ymin, computedSurface.getWidth(), computedSurface.getHeight()));
+        RectangleShape rectangle = shapes.stream()
+                .reduce(null,
+                        (RectangleShape board, RectangleShape rectangleShape) ->
+                                (RectangleShape) this.comparator.exec(rectangleShape, board)
+                );
+        list.add(new BoardShape(rectangle.x, rectangle.y, rectangle.width, rectangle.height));
         return list;
     }
 }
