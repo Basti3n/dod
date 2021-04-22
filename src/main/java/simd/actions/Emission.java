@@ -4,7 +4,6 @@ import models.BoardShape;
 import models.RectangleShape;
 import models.Shape;
 import simd.algorithm.Comparator;
-import simd.algorithm.RectangleComparator;
 
 import java.util.ArrayList;
 import java.util.List;

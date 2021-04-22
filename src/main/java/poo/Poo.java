@@ -1,7 +1,10 @@
 package poo;
 
 import javafx.controllers.IndexController;
-import models.*;
+import models.BoardShape;
+import models.CircleShape;
+import models.RectangleShape;
+import models.Shape;
 import simd.actions.Consommation;
 
 import java.util.ArrayList;
@@ -12,7 +15,7 @@ public class Poo {
 
     public static void run(List<Shape> shapes, IndexController indexController) {
 
-        if( !shapes.isEmpty()){
+        if (!shapes.isEmpty()) {
             List<Shape> finalShapes = new ArrayList<>();
 
             finalShapes.add(generateBoard(shapes));

@@ -1,10 +1,11 @@
 package simd.actions;
 
-import java.util.List;
 import models.Shape;
+
+import java.util.List;
 
 public interface Pipeline {
 
-	List<Shape> output(List<Shape> input);
+    List<Shape> output(List<Shape> input);
 
 }

@@ -2,15 +2,17 @@ package simd;
 
 import javafx.controllers.IndexController;
 import models.RectangleShape;
-import simd.actions.*;
-//import simd.actions.Emission;
+import models.Shape;
+import models.ShapeType;
+import simd.actions.Consommation;
+import simd.actions.Emission;
+import simd.actions.Filtre;
+import simd.actions.Mutation;
+import simd.algorithm.RectangleComparator;
+import simd.algorithm.RectangleConverter;
 
 import java.util.ArrayList;
 import java.util.List;
-import models.Shape;
-import models.ShapeType;
-import simd.algorithm.RectangleConverter;
-import simd.algorithm.RectangleComparator;
 
 public class Simd {
 

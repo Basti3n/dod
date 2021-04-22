@@ -6,9 +6,9 @@ import models.Shape;
 import parallel.actions.Action;
 import parallel.actions.Mutation;
 import simd.actions.Consommation;
-import simd.algorithm.RectangleConverter;
 import simd.actions.Emission;
 import simd.algorithm.RectangleComparator;
+import simd.algorithm.RectangleConverter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +26,9 @@ public class Parallel {
 
         for (Shape shape : shapes) {
             taches.add(
-                processeur.submit(
-                        new Tache(shape, action)
-                )
+                    processeur.submit(
+                            new Tache(shape, action)
+                    )
             );
         }
 
@@ -36,7 +36,7 @@ public class Parallel {
         try {
             for (Future<Shape> tache : taches) {
                 // Extraction de chaque résultat par tâche
-                    resultats.add((RectangleShape) tache.get());
+                resultats.add((RectangleShape) tache.get());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,7 +48,7 @@ public class Parallel {
     }
 
     public static void run(List<Shape> shapes, int coreCount, IndexController indexController) {
-        if( !shapes.isEmpty()) {
+        if (!shapes.isEmpty()) {
             List<RectangleShape> finalShapes = parallelize(shapes, coreCount);
             Consommation consommation = new Consommation(indexController);
             consommation.consume(new Emission(new RectangleComparator()).output(finalShapes));

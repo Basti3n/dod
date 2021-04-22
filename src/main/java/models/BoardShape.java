@@ -1,6 +1,6 @@
 package models;
 
-public class BoardShape extends Shape{
+public class BoardShape extends Shape {
     public float width;
     public float height;
 

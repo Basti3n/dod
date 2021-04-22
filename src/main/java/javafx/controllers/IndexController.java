@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import models.*;
 import parallel.Parallel;
 import poo.Poo;
-
 import simd.Simd;
 import simd.actions.Consommation;
 
@@ -107,7 +106,7 @@ public class IndexController {
         this.colorToDraw = ColorShape.ROUGE;
         this.printCurrentMode();
         this.setDefaultButtonStyleColor();
-        this.buttonColorOne.setStyle("-fx-border-color: Black;-fx-background-color:  "+ ColorShape.ROUGE +";");
+        this.buttonColorOne.setStyle("-fx-border-color: Black;-fx-background-color:  " + ColorShape.ROUGE + ";");
     }
 
     @FXML
@@ -115,7 +114,7 @@ public class IndexController {
         this.colorToDraw = ColorShape.VERT;
         this.printCurrentMode();
         this.setDefaultButtonStyleColor();
-        this.buttonColorTwo.setStyle("-fx-border-color: Black;-fx-background-color:  "+ ColorShape.VERT +";");
+        this.buttonColorTwo.setStyle("-fx-border-color: Black;-fx-background-color:  " + ColorShape.VERT + ";");
     }
 
     @FXML
@@ -123,7 +122,7 @@ public class IndexController {
         this.colorToDraw = ColorShape.BLEU;
         this.printCurrentMode();
         this.setDefaultButtonStyleColor();
-        this.buttonColorThree.setStyle("-fx-border-color: Black;-fx-background-color:  "+ ColorShape.BLEU +";");
+        this.buttonColorThree.setStyle("-fx-border-color: Black;-fx-background-color:  " + ColorShape.BLEU + ";");
     }
 
     @FXML
@@ -164,7 +163,7 @@ public class IndexController {
     public void initialize() {
         this.drawBackground();
         this.setDefaultButtonStyle();
-        this.buttonColorOne.setStyle("-fx-border-color: Black;-fx-background-color:  "+ ColorShape.ROUGE +";");
+        this.buttonColorOne.setStyle("-fx-border-color: Black;-fx-background-color:  " + ColorShape.ROUGE + ";");
         this.buttonCircle.setStyle("-fx-background-color: #0093ff");
         this.buttonSimd.setStyle("-fx-background-color: #0093ff");
 
@@ -197,29 +196,28 @@ public class IndexController {
         this.headerBox.toFront();
     }
 
-    private void setDefaultButtonStyle(){
+    private void setDefaultButtonStyle() {
         this.setDefaultButtonStyleShape();
         this.setDefaultButtonStyleAlgorithm();
         this.setDefaultButtonStyleColor();
     }
 
-    private void setDefaultButtonStyleShape(){
+    private void setDefaultButtonStyleShape() {
         this.buttonCircle.setStyle("-fx-box-border: ladder(-fx-color, black 20%, derive(-fx-color,-30%) 30%);");
         this.buttonRectangle.setStyle("-fx-box-border: ladder(-fx-color, black 20%, derive(-fx-color,-30%) 30%);");
     }
 
-    private void setDefaultButtonStyleAlgorithm(){
+    private void setDefaultButtonStyleAlgorithm() {
         this.buttonPoo.setStyle("-fx-box-border: ladder(-fx-color, black 20%, derive(-fx-color,-30%) 30%);");
         this.buttonSimd.setStyle("-fx-box-border: ladder(-fx-color, black 20%, derive(-fx-color,-30%) 30%);");
         this.buttonParallel.setStyle("-fx-box-border: ladder(-fx-color, black 20%, derive(-fx-color,-30%) 30%);");
     }
 
-    private void setDefaultButtonStyleColor(){
-        this.buttonColorOne.setStyle("-fx-background-color: " + ColorShape.ROUGE +";");
-        this.buttonColorTwo.setStyle("-fx-background-color: " + ColorShape.VERT +";");
-        this.buttonColorThree.setStyle("-fx-background-color: " + ColorShape.BLEU +";");
+    private void setDefaultButtonStyleColor() {
+        this.buttonColorOne.setStyle("-fx-background-color: " + ColorShape.ROUGE + ";");
+        this.buttonColorTwo.setStyle("-fx-background-color: " + ColorShape.VERT + ";");
+        this.buttonColorThree.setStyle("-fx-background-color: " + ColorShape.BLEU + ";");
     }
-
 
 
     private void drawBackground() {
@@ -237,7 +235,7 @@ public class IndexController {
         this.labelProcessTime.setText(String.format("%.03f ms", (float) timer / 1000000));
     }
 
-    private void printCurrentMode(){
+    private void printCurrentMode() {
         System.out.println(this.shapeToDraw + " - " + this.calcMode + " - " + this.colorToDraw.name());
     }
 
@@ -281,7 +279,7 @@ public class IndexController {
                 break;
             case "PARALLEL":
                 beginTime = System.nanoTime();
-                Parallel.run(this.shapes, 8,this);
+                Parallel.run(this.shapes, 8, this);
                 endTime = System.nanoTime();
                 this.setLabelProcessTime(endTime - beginTime);
                 break;
