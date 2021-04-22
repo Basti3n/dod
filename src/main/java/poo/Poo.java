@@ -6,25 +6,26 @@ import simd.actions.Consommation;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class Poo {
 
     public static void run(List<Shape> shapes, IndexController indexController) {
-        List<Shape> finalShapes = new ArrayList<>();
 
-        finalShapes.add(generateBoard(shapes));
-        Consommation consommation = new Consommation(indexController);
-        consommation.consume(finalShapes);
+        if( !shapes.isEmpty()){
+            List<Shape> finalShapes = new ArrayList<>();
+
+            finalShapes.add(generateBoard(shapes));
+            Consommation consommation = new Consommation(indexController);
+            consommation.consume(finalShapes);
+        }
 
     }
 
     public static BoardShape generateBoard(List<Shape> shapes) {
         RectangleShape board = shapes.stream()
                 .map(Poo::convert)
-                .reduce(null, (RectangleShape acc, RectangleShape currentShape) -> {
-                    return compareBiggest(acc, currentShape);
-                });
+                .reduce(null, Poo::compareBiggest);
 
         return new BoardShape(board.x, board.y, board.width, board.height);
     }

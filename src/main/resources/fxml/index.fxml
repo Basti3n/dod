@@ -21,22 +21,22 @@
             <HBox alignment="CENTER"  style="-fx-background-color: #FFFFFF" >
                 <children>
                     <HBox alignment="CENTER_LEFT" prefWidth="225.0" spacing="5">
-                        <Button text="Cercle"  onMouseClicked="#onCircleButtonClicked" prefHeight="38.0" prefWidth="70.0"/>
-                        <Button text="Rectangle"  onMouseClicked="#onRectangleButtonClicked" prefHeight="38.0" prefWidth="70.0"/>
+                        <Button text="Cercle"  onMouseClicked="#onCircleButtonClicked" prefHeight="38.0" prefWidth="70.0" id="buttonCircle" fx:id="buttonCircle"/>
+                        <Button text="Rectangle"  onMouseClicked="#onRectangleButtonClicked" prefHeight="38.0" prefWidth="70.0" id="buttonRectangle" fx:id="buttonRectangle"/>
                         <Button text="Effacer"  onMouseClicked="#onClearButtonClicked" prefHeight="38.0" prefWidth="70.0"/>
                     </HBox>
                     <Region prefWidth="25.0" prefHeight="40.0" HBox.hgrow="ALWAYS" />
                     <HBox alignment="CENTER_LEFT" prefWidth="300.0" spacing="5">
-                        <Button text="POO" prefHeight="38.0"       onMouseClicked="#onChangeToPOO"  prefWidth="70.0"/>
-                        <Button text="SIMD" prefHeight="38.0"      onMouseClicked="#onChangeToSIMD"  prefWidth="70.0"/>
-                        <Button text="PARALLEL" prefHeight="38.0"  onMouseClicked="#onChangeToPARALLEL"  prefWidth="70.0"/>
+                        <Button text="POO" prefHeight="38.0"       onMouseClicked="#onChangeToPOO"  prefWidth="70.0" id="buttonPoo" fx:id="buttonPoo"/>
+                        <Button text="SIMD" prefHeight="38.0"      onMouseClicked="#onChangeToSIMD"  prefWidth="70.0" id="buttonSimd" fx:id="buttonSimd"/>
+                        <Button text="PARALLEL" prefHeight="38.0"  onMouseClicked="#onChangeToPARALLEL"  prefWidth="70.0" id="buttonParallel" fx:id="buttonParallel"/>
                         <Label prefWidth="70.0" prefHeight="38.0" HBox.hgrow="ALWAYS" text="45ms" id="labelProcessTime" fx:id="labelProcessTime"/>
                     </HBox>
                     <Region prefWidth="25.0" prefHeight="40.0" HBox.hgrow="ALWAYS"/>
                     <HBox alignment="CENTER_RIGHT" prefWidth="225.0" spacing="5">
-                        <Button prefHeight="38.0" prefWidth="50.0" onMouseClicked="#onChangeColorOne"  style="-fx-background-color: #b80a07"/>
-                        <Button prefHeight="38.0" prefWidth="50.0" onMouseClicked="#onChangeColorTwo" style="-fx-background-color: #3bd13b"/>
-                        <Button prefHeight="38.0" prefWidth="50.0" onMouseClicked="#onChangeColorThree"   style="-fx-background-color: #3b4ad1"/>
+                        <Button prefHeight="38.0" prefWidth="50.0" onMouseClicked="#onChangeColorOne"  style="-fx-background-color: #b80a07" id="buttonColorOne" fx:id="buttonColorOne"/>
+                        <Button prefHeight="38.0" prefWidth="50.0" onMouseClicked="#onChangeColorTwo" style="-fx-background-color: #3bd13b" id="buttonColorTwo" fx:id="buttonColorTwo"/>
+                        <Button prefHeight="38.0" prefWidth="50.0" onMouseClicked="#onChangeColorThree"   style="-fx-background-color: #3b4ad1" id="buttonColorThree" fx:id="buttonColorThree"/>
                     </HBox>
                 </children>
             </HBox>

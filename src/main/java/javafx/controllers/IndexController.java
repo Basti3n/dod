@@ -2,6 +2,7 @@ package javafx.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.Group;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -36,6 +37,32 @@ public class IndexController {
     @FXML
     public Label labelProcessTime;
 
+    @FXML
+    public Button buttonCircle;
+
+    @FXML
+    public Button buttonRectangle;
+
+    @FXML
+    public Button buttonPoo;
+
+    @FXML
+    public Button buttonSimd;
+
+    @FXML
+    public Button buttonParallel;
+
+    @FXML
+    public Button buttonColorOne;
+
+    @FXML
+    public Button buttonColorTwo;
+
+    @FXML
+
+    public Button buttonColorThree;
+
+
     public String shapeToDraw = "Circle";
 
     public float beginX = 0;
@@ -63,30 +90,40 @@ public class IndexController {
     public void onCircleButtonClicked() {
         this.shapeToDraw = "Circle";
         this.printCurrentMode();
+        this.setDefaultButtonStyleShape();
+        this.buttonCircle.setStyle("-fx-background-color: #0093ff");
     }
 
     @FXML
     public void onRectangleButtonClicked() {
         this.shapeToDraw = "Rectangle";
         this.printCurrentMode();
+        this.setDefaultButtonStyleShape();
+        this.buttonRectangle.setStyle("-fx-background-color: #0093ff");
     }
 
     @FXML
     public void onChangeColorOne() {
         this.colorToDraw = ColorShape.ROUGE;
         this.printCurrentMode();
+        this.setDefaultButtonStyleColor();
+        this.buttonColorOne.setStyle("-fx-border-color: Black;-fx-background-color:  "+ ColorShape.ROUGE +";");
     }
 
     @FXML
     public void onChangeColorTwo() {
         this.colorToDraw = ColorShape.VERT;
         this.printCurrentMode();
+        this.setDefaultButtonStyleColor();
+        this.buttonColorTwo.setStyle("-fx-border-color: Black;-fx-background-color:  "+ ColorShape.VERT +";");
     }
 
     @FXML
     public void onChangeColorThree() {
         this.colorToDraw = ColorShape.BLEU;
         this.printCurrentMode();
+        this.setDefaultButtonStyleColor();
+        this.buttonColorThree.setStyle("-fx-border-color: Black;-fx-background-color:  "+ ColorShape.BLEU +";");
     }
 
     @FXML
@@ -101,6 +138,8 @@ public class IndexController {
         this.calcMode = "POO";
         this.launchCalc();
         this.printCurrentMode();
+        this.setDefaultButtonStyleAlgorithm();
+        this.buttonPoo.setStyle("-fx-background-color: #0093ff");
     }
 
     @FXML
@@ -108,6 +147,8 @@ public class IndexController {
         this.calcMode = "SIMD";
         this.launchCalc();
         this.printCurrentMode();
+        this.setDefaultButtonStyleAlgorithm();
+        this.buttonSimd.setStyle("-fx-background-color: #0093ff");
     }
 
     @FXML
@@ -115,11 +156,18 @@ public class IndexController {
         this.calcMode = "PARALLEL";
         this.launchCalc();
         this.printCurrentMode();
+        this.setDefaultButtonStyleAlgorithm();
+        this.buttonParallel.setStyle("-fx-background-color: #0093ff");
     }
 
     @FXML
     public void initialize() {
         this.drawBackground();
+        this.setDefaultButtonStyle();
+        this.buttonColorOne.setStyle("-fx-border-color: Black;-fx-background-color:  "+ ColorShape.ROUGE +";");
+        this.buttonCircle.setStyle("-fx-background-color: #0093ff");
+        this.buttonSimd.setStyle("-fx-background-color: #0093ff");
+
 
         this.mainGroup.setOnMousePressed(event -> {
             beginX = (float) event.getX();
@@ -147,8 +195,32 @@ public class IndexController {
     private void setStyle() {
         this.mainGroup.setStyle("-fx-background-color: #252525");
         this.headerBox.toFront();
-
     }
+
+    private void setDefaultButtonStyle(){
+        this.setDefaultButtonStyleShape();
+        this.setDefaultButtonStyleAlgorithm();
+        this.setDefaultButtonStyleColor();
+    }
+
+    private void setDefaultButtonStyleShape(){
+        this.buttonCircle.setStyle("-fx-box-border: ladder(-fx-color, black 20%, derive(-fx-color,-30%) 30%);");
+        this.buttonRectangle.setStyle("-fx-box-border: ladder(-fx-color, black 20%, derive(-fx-color,-30%) 30%);");
+    }
+
+    private void setDefaultButtonStyleAlgorithm(){
+        this.buttonPoo.setStyle("-fx-box-border: ladder(-fx-color, black 20%, derive(-fx-color,-30%) 30%);");
+        this.buttonSimd.setStyle("-fx-box-border: ladder(-fx-color, black 20%, derive(-fx-color,-30%) 30%);");
+        this.buttonParallel.setStyle("-fx-box-border: ladder(-fx-color, black 20%, derive(-fx-color,-30%) 30%);");
+    }
+
+    private void setDefaultButtonStyleColor(){
+        this.buttonColorOne.setStyle("-fx-background-color: " + ColorShape.ROUGE +";");
+        this.buttonColorTwo.setStyle("-fx-background-color: " + ColorShape.VERT +";");
+        this.buttonColorThree.setStyle("-fx-background-color: " + ColorShape.BLEU +";");
+    }
+
+
 
     private void drawBackground() {
         this.drawRectangle(0, 40, 800, 600, ColorShape.LIGHT_GRIS);

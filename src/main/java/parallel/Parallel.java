@@ -48,9 +48,11 @@ public class Parallel {
     }
 
     public static void run(List<Shape> shapes, int coreCount, IndexController indexController) {
-        List<RectangleShape> finalShapes =  parallelize(shapes, coreCount);
-        Consommation consommation = new Consommation(indexController);
-        consommation.consume(new Emission(new RectangleComparator()).output(finalShapes));
+        if( !shapes.isEmpty()) {
+            List<RectangleShape> finalShapes = parallelize(shapes, coreCount);
+            Consommation consommation = new Consommation(indexController);
+            consommation.consume(new Emission(new RectangleComparator()).output(finalShapes));
+        }
     }
 
 }
