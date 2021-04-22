@@ -1,7 +1,5 @@
 package models;
 
-import poo.Surface;
-
 public class CircleShape extends Shape {
 
     public float radius;
