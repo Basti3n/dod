@@ -23,6 +23,7 @@ public class Main extends Application {
         indexController.setStage(primaryStage);
         primaryStage.setTitle("DOD");
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
