@@ -15,7 +15,6 @@ public class Emission implements Pipeline {
         Surface computedSurface = shapes.stream()
                 .map((Shape::getSurface))
                 .reduce(new Surface(), (Surface surface, Surface currentSurface) -> {
-                    System.out.println(currentSurface);
                     return surface.getOccupedSurface(currentSurface);
                 });
         list.add(new BoardShape(computedSurface.xmin, computedSurface.ymin, computedSurface.getWidth(), computedSurface.getHeight()));

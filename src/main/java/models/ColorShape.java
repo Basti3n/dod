@@ -1,11 +1,12 @@
 package models;
 
 public enum ColorShape {
-    ROUGE("RED"),
-    VERT("GREEN"),
+    ROUGE("#b80a07"),
+    VERT("#3bd13b"),
     VIOLET("PURPLE"),
-    BLEU("BLUE"),
+    BLEU("#3b4ad1"),
     GRIS("#959595"),
+    WHITE("#FFFFFF"),
     LIGHT_GRIS("#252525");
 
     public final String colorCode;

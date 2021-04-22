@@ -23,8 +23,6 @@ public class Parallel {
         List<Future<Shape>> taches = new ArrayList<>();
         Action action = new Mutation(ShapeType.RECTANGLE);
 
-        System.out.println("[ " + nbCoeurs + " coeur(s) ]");
-
         for (Shape shape : shapes) {
             taches.add(
                 processeur.submit(
@@ -32,9 +30,6 @@ public class Parallel {
                 )
             );
         }
-
-        System.out.println();
-        System.out.println("[ MUTATION ] (Parellel)");
 
         List<Shape> resultats = new ArrayList<>();
         try {
@@ -47,14 +42,6 @@ public class Parallel {
         }
 
         processeur.shutdown();
-
-        System.out.println();
-        System.out.println("[ RESULTATS ] (Parellel)");
-        for (Shape resultat : resultats) {
-            System.out.println("  - " + resultat);
-        }
-
-        System.out.println();
 
         return resultats;
     }

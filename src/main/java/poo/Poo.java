@@ -23,11 +23,9 @@ public class Poo {
         RectangleShape board = shapes.stream()
                 .map(Poo::convert)
                 .reduce(null, (RectangleShape acc, RectangleShape currentShape) -> {
-                    System.out.println(currentShape);
                     return compareBiggest(acc, currentShape);
                 });
-        System.out.println("board.toString()");
-        System.out.println(board.toString());
+
         return new BoardShape(board.x, board.y, board.width, board.height);
     }
 
@@ -53,13 +51,6 @@ public class Poo {
         }
 
         return (RectangleShape) shape;
-    }
-
-    public static List<ColorShape> getAllColorShapes(List<Shape> shapes) {
-        return shapes.stream()
-                .map((Shape shape) -> shape.colorShape)
-                .distinct()
-                .collect(Collectors.toList());
     }
 
 }

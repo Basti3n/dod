@@ -18,7 +18,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/index.fxml"));
         Pane rootLayout = (Pane) loader.load();
-        Scene scene = new Scene(rootLayout,800, 800);
+        Scene scene = new Scene(rootLayout,800, 740);
         IndexController indexController = loader.getController();
         indexController.setStage(primaryStage);
         primaryStage.setTitle("DOD");
